@@ -1,0 +1,281 @@
+#+title: mpv-scripts
+
+=mpv-scripts= is a collection of multiple mpv scripts sharing basic functionalities.
+
+* Install
+
+just copy =modules= directory and =example.lua= file to mpv's configuration directory.
+
+* History
+
+stores play history and navigates play history and resume it. the history is stored in =history.json= file in the mpv config directory.
+
+** Default Screen
+
+- =h=: show play history. (History Screen)
+
+** History Screen
+
+[[file:docs/history.png]]
+
+navigates history items and open media files.
+
+- =esc=: exit History.
+- =up=: move the cursor one line up.
+- =down=: move the cursor one line down.
+- =pageup=: move the cursor one page up.
+- =pagedown=: move the cursor one page down.
+- =space=: toggle select status of the item on the cursor.
+- =f=: start to filter list. (Filter Screen)
+- =h=: show help. (Help Screen)
+- =enter=: execute the selected items or the item on the cursor.
+  - no selected item: resume the history item on the cursor.
+  - selected items: resume the first selected item.
+
+** Filter Screen
+
+shows only history items including a filter word and edits a filter word.
+
+- =esc=: exit Filter. (History Screen)
+- =up=: move the cursor one line up.
+- =down=: move the cursor one line down.
+- =left=: go to the parent directory.
+- =pageup=: move the cursor one page up.
+- =pagedown=: move the cursor one page down.
+- =space=: toggle select status of the item on the cursor.
+- =0-9,a-z,backspace=: edit the filter.
+- =right=, =enter=: execute the selected items or the item on the cursor.
+  - no selected item: resume the history item on the cursor.
+  - selected items: resume the first selected item.
+
+** Help Screen
+
+shows help message for key binding.
+
+- =esc=: exit History.
+- =h=: exit help. (History Screen)
+
+** Files
+
+dependency files.
+
+- =example.lua= is an example to enable =History= mpv script.
+- =modules/history.lua= is main implementation of =History= mpv script.
+- =modules/log.lua= outputs log.
+- =modules/filetype.lua= returns file types and icons based on extension.
+- =modules/showlist.lua= shows list on mpv screen.
+
+* FileList
+
+navigates a local file system and open media or subtitle files.
+
+** Default Screen
+
+- =o=: show the file list of the current directory. (FileList Screen)
+
+** FileList Screen
+
+[[file:docs/filelist.png]]
+
+shows file list in a directory.
+
+- =esc=: exit FileList.
+- =up=: move the cursor one line up.
+- =down=: move the cursor one line down.
+- =left=: go to the parent directory.
+- =pageup=: move the cursor one page up.
+- =pagedown=: move the cursor one page down.
+- =space=: toggle select status of the item on the cursor.
+- =f=: start to filter list. (Filter Screen)
+- =h=: show help. (Help Screen)
+- =enter=, =right=: execute the selected items or the item on the cursor.
+  - no selected item
+    - the cursor on a directory: go to the directory.
+    - the cursor on a file: open the file.
+  - selected items: open the selected files as a playlist. (the selected directories will be ignored)
+
+** Filter Screen
+
+[[file:docs/filelist-filter.png]]
+
+shows only file list including a filter word in a directory and edits a filter word.
+
+- =esc=: exit Filter. (FileList Screen)
+- =up=: move the cursor one line up.
+- =down=: move the cursor one line down.
+- =left=: go to the parent directory.
+- =pageup=: move the cursor one page up.
+- =pagedown=: move the cursor one page down.
+- =space=: toggle select status of the item on the cursor.
+- =0-9,a-z,backspace=: edit the filter.
+- =right=, =enter=: execute the selected items or the item on the cursor.
+  - no selected item
+    - the cursor on a directory: go to the directory.
+    - the cursor on a file: open the file.
+  - selected items: open the selected files as a playlist. (the selected directories will be ignored)
+
+** Help Screen
+
+[[file:docs/filelist-help.png]]
+
+shows help message for key binding.
+
+- =esc=: exit FileList.
+- =h=: exit help. (FileList Screen)
+
+** Files
+
+dependency files.
+
+- =example.lua= is an example to enable =FileList= mpv script.
+- =modules/filelist.lua= is main implementation of =FileList= mpv script.
+- =modules/log.lua= outputs log.
+- =modules/filetype.lua= returns file types and icons based on extension.
+- =modules/showlist.lua= shows list on mpv screen.
+
+* PlayList
+
+navigates playlist items and open it.
+
+** Default Screen
+
+- =p=: show playlist items. (PlayList Screen)
+
+** PlayList Screen
+
+[[file:docs/playlist.png]]
+
+shows playlist items.
+
+- =esc=: exit PlayList.
+- =up=: move the cursor one line up.
+- =down=: move the cursor one line down.
+- =pageup=: move the cursor one page up.
+- =pagedown=: move the cursor one page down.
+- =space=: toggle select status of the item on the cursor.
+- =f=: start to filter list. (Filter Screen)
+- =h=: show help. (Help Screen)
+- =enter=: load the selected items or the item on the cursor.
+  - no selected item: load the playlist item on the cursor.
+  - selected items: load the first selected item.
+
+** Filter Screen
+
+shows only history items including a filter word and edits a filter word.
+
+- =esc=: exit Filter. (PlayList Screen)
+- =up=: move the cursor one line up.
+- =down=: move the cursor one line down.
+- =pageup=: move the cursor one page up.
+- =pagedown=: move the cursor one page down.
+- =space=: toggle select status of the item on the cursor.
+- =0-9,a-z,backspace=: edit the filter.
+- =enter=: load the selected items or the item on the cursor.
+  - no selected item: load the playlist item on the cursor.
+  - selected items: load the first selected item.
+
+** Help Screen
+
+shows help message for key binding.
+
+- =esc=: exit FileList.
+- =h=: exit help. (FileList Screen)
+
+** Files
+
+dependency files.
+
+- =example.lua= is an example to enable =PlayList= mpv script.
+- =modules/playlist.lua= is main implementation of =PlayList= mpv script.
+- =modules/log.lua= outputs log.
+- =modules/filetype.lua= returns file types and icons based on extension.
+- =modules/showlist.lua= shows list on mpv screen.
+
+* Subtitle
+
+navigates subtitle list items and load it.
+
+** Default Screen
+
+- =s=: show subtitle list items. (SubtitleList Screen)
+
+** SubtitleList Screen
+
+[[file:docs/subtitle.png]]
+
+shows subtitle list items.
+
+- =esc=: exit PlayList.
+- =up=: move the cursor one line up.
+- =down=: move the cursor one line down.
+- =pageup=: move the cursor one page up.
+- =pagedown=: move the cursor one page down.
+- =space=: toggle select status of the item on the cursor.
+- =f=: start to filter list. (Filter Screen)
+- =h=: show help. (Help Screen)
+- =enter=, =1=: load the selected items or the item on the cursor as 1st subtitle.
+  - no selected item: load the subtitle list item on the cursor.
+  - selected items: load the first selected item.
+- =2=: load the selected items or the item on the cursor as 2nd subtitle.
+  - no selected item: load the subtitle list item on the cursor.
+  - selected items: load the first selected item.
+
+** Filter Screen
+
+shows only history items including a filter word and edits a filter word.
+
+- =esc=: exit Filter. (SubtitleList Screen)
+- =up=: move the cursor one line up.
+- =down=: move the cursor one line down.
+- =pageup=: move the cursor one page up.
+- =pagedown=: move the cursor one page down.
+- =space=: toggle select status of the item on the cursor.
+- =0-9,a-z,backspace=: edit the filter.
+- =enter=: load the selected items or the item on the cursor as 1st subtitle.
+  - no selected item: load the playlist item on the cursor.
+  - selected items: load the first selected item.
+
+** Help Screen
+
+shows help message for key binding.
+
+- =esc=: exit SubtitleList.
+- =h=: exit help. (SubtitleList Screen)
+
+** Files
+
+dependency files.
+
+- =example.lua= is an example to enable =SubtitleList= mpv script.
+- =modules/subtitle.lua= is main implementation of =SubtitleList= mpv script.
+- =modules/log.lua= outputs log.
+- =modules/filetype.lua= returns file types and icons based on extension.
+- =modules/showlist.lua= shows list on mpv screen.
+
+* Loop
+
+toggles a-b loop with current subtitle's start and end time.
+
+** Default Screen
+
+- =l=: toggle a-b loop. (Loop Screen)
+
+** Loop Screen
+
+[[file:docs/loop.png]]
+
+modifies start and end time of a-b loop.
+
+- =l=: exit Loop.
+- ={=: backward start time.
+- =}=: forward start time.
+- =[=: backward end time.
+- =]=: forward end time.
+
+** Files
+
+dependency files.
+
+- =example.lua= is an example to enable =Loop= mpv script.
+- =modules/log.lua= outputs log.
+- =modules/loop.lua= is main implementation of =Loop= mpv script.
